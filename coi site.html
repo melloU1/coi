@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виктор Цой</title>
+    <style>
+        :root {
+            --primary-color: #222222;
+            --secondary-color: #333333;
+            --accent-color: #e74c3c;
+            --text-color: #ecf0f1;
+            --light-text: #bdc3c7;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('https://sun9-73.userapi.com/c857628/v857628886/1a5991/N-tqGdyqWEM.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(34, 34, 34, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .flex-cont {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a.logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.3s ease;
+        }
+
+        a.logo:hover {
+            transform: scale(1.03);
+        }
+
+        a.logo img {
+            height: 40px;
+            margin-left: 10px;
+            filter: invert(0.9);
+        }
+
+        .auth-menu span {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: var(--accent-color);
+            transition: all 0.3s;
+        }
+
+        .auth-menu span:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            margin: 90px auto 0;
+            padding: 40px 20px;
+        }
+
+        .grid-cont {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .item {
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            min-height: 150px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .sale {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: var(--text-color);
+            border: 2px dashed var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sale:hover{
+            animation: llala 0.5s ease-in-out;
+        }
+
+        .product {
+            background-color: rgba(34, 34, 34, 0.8);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .product:hover {
+            background-color: rgba(44, 62, 80, 0.9);
+        }
+
+        .song-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .song-duration {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            background-color: #c0392b;
+        }
+
+        .sale-1 {
+            grid-column: 1 / span 2;
+            grid-row: 1;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(34, 34, 34, 0.8));
+        }
+
+        .sale-2 {
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(34, 34, 34, 0.8));
+        }
+
+        .sale-3 {
+            grid-column: 3 / span 2;
+            grid-row: 3;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(34, 34, 34, 0.8));
+        }
+        
+        .sale-4 {
+            grid-column: 3 / span 2;
+            grid-row: 4;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(34, 34, 34, 0.8));
+        }
+
+        .product-1 {
+            grid-column: 3;
+            grid-row: 1 / span 2;
+        }
+
+        .product-2 {
+            grid-column: 4;
+            grid-row: 1 / span 2;
+        }
+
+        .product-3 {
+            grid-column: 1;
+            grid-row: 3 / span 2;
+        }
+
+        .product-4 {
+            grid-column: 2;
+            grid-row: 3 / span 2;
+        }
+
+        .product-5 {
+            grid-column: 1;
+            grid-row: 5;
+        }
+        
+        .product-6 {
+            grid-column: 2;
+            grid-row: 5;
+        }
+
+        .product-7 {
+            grid-column: 3;
+            grid-row: 5;
+        }
+
+        .product-8 {
+            grid-column: 4;
+            grid-row: 5;
+        }
+
+        footer {
+            flex-shrink: 0;
+            background-color: rgba(34, 34, 34, 0.95);
+            color: var(--light-text);
+            padding: 30px 0;
+            width: 100%;
+        }
+
+        .footer-main-text {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-main-text h3 {
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        @keyframes llala {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.1); }
+            75% {transform: rotate(-3deg) scale(1.05);}
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .grid-cont {
+                grid-template-columns: 1fr;
+            }
+            
+            .sale-1, .sale-2, .sale-3, .sale-4,
+            .product-1, .product-2, .product-3, .product-4,
+            .product-5, .product-6, .product-7, .product-8 {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flex-cont">
+            <a href="#" class="logo">
+                <span>KINO-Music</span>
+                <img src="C:\Users\Develop\Downloads\sound.png" alt="Логотип VK Music">
+            </a>
+            <div class="auth-menu">
+                <span>Войти</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="grid-cont">
+            <div class="item sale sale-1">
+                <h3 class="song-title">Новый сборник хитов</h3>
+                <p class="song-duration">Лучшие песни Виктора Цоя</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-1">
+                <h3 class="song-title">Группа крови</h3>
+                <p class="song-duration">4:45</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-2">
+                <h3 class="song-title">Пачка сигарет</h3>
+                <p class="song-duration">4:28</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item sale sale-2">
+                <h3 class="song-title">Год выпуска: 1988</h3>
+                <p class="song-duration">Дата выхода альбома</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-3">
+                <h3 class="song-title">Звезда по имени Солнце</h3>
+                <p class="song-duration">3:45</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-4">
+                <h3 class="song-title">Кукушка</h3>
+                <p class="song-duration">6:38</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item sale sale-3">
+                <h3 class="song-title">Концертный тур 2024</h3>
+                <p class="song-duration">Трибьют-концерты памяти</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item sale sale-4">
+                <h3 class="song-title">Кино в кино</h3>
+                <p class="song-duration">Релизы в Dolby Atmos</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-5">
+                <h3 class="song-title">Алюминиевые огурцы</h3>
+                <p class="song-duration">4:02</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-6">
+                <h3 class="song-title">Перемен!</h3>
+                <p class="song-duration">4:57</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-7">
+                <h3 class="song-title">Восьмиклассница</h3>
+                <p class="song-duration">3:22</p>
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="item product product-8">
+                <h3 class="song-title">Закрой за мной дверь</h3>
+                <p class="song-duration">5:08</p>
+                <div class="play-btn">▶</div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-main-text">
+            <h3>Создано для любителей настоящей музыки. © 2025 VK Music. Виктор Цой жив.</h3>
+        </div>
+    </footer>
+</body>
+</html>
